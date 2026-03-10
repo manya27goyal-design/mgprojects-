@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Table | Barbeque On Table</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('images/grill_closeup.jpg') no-repeat center center/cover;
+            padding: 20px;
+        }
+
+        .booking-container {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 87, 34, 0.2);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .booking-logo {
+            max-width: 120px;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+        }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .option-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.2rem;
+            border-radius: var(--radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-eazydiner {
+            background: #e62e2d;
+            color: white;
+        }
+
+        .btn-call {
+            background: transparent;
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .option-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            filter: brightness(1.1);
+        }
+
+        .back-link {
+            margin-top: 2rem;
+            display: inline-block;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="booking-container">
+        <img src="images/hero_bg.jpg" alt="Logo" class="booking-logo">
+        <h1>Book Your <span class="accent">Grill</span></h1>
+        <div class="options-grid">
+            <!-- Option 1: WhatsApp -->
+            <a href="https://wa.me/919521677773?text=Hi, I would like to book a table." class="option-btn btn-whatsapp"
+                target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Book via WhatsApp
+            </a>
+
+            <!-- Option 2: EazyDiner -->
+            <a href="https://www.eazydiner.com/jodhpur/barbeque-on-table-ratanada-jodhpur-703092/menu"
+                class="option-btn btn-eazydiner" target="_blank">
+                <i class="fa-solid fa-utensils"></i> Book on EazyDiner
+            </a>
+
+            <!-- Option 3: Call -->
+            <a href="tel:+919521677773" class="option-btn btn-call call-btn-interactive">
+                <i class="fa-solid fa-phone pulse"></i> Contact No: +91 95216 77773
+            </a>
+        </div>
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+    </div>
+</body>
+
+</html>
