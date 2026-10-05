@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trackin</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-mark">
+                <i class="fa-solid fa-chart-line"></i>
+            </span>
+            <span>Trackin</span>
+        </div>
+        <div class="navbar-right">
+            <button class="notification-btn" aria-label="Notifications">
+                <i class="fa-solid fa-bell" ></i>
+            </button>
+            <div class="profile">
+                <div class="profile-avatar">
+                    M
+                </div>
+                <span>Manya</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">
+                    <span><i class="fa-solid fa-house"></i></span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span><i class="fa-solid fa-credit-card"></i></span>
+                    <span>Transactions</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span><i class="fa-solid fa-chart-simple"></i></span>
+                    <span>Analytics</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span><i class="fa-solid fa-wallet"></i></span>
+                    <span>Budget</span>
+                </a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="#" class="nav-item">
+                    <span><i class="fa-solid fa-gear"></i></span>
+                    <span>Settings</span>
+                </a>                
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <section class="welcome-section">
+                <div>
+                    <h1>Good Evening, Manya</h1>
+                    <p> Here's what's happening with your finances.</p>
+                </div>
+                <button class="add-transaction-btn" id="open-modal">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Add Transaction</span>
+                </button>
+            </section>
+
+            <section class="summary-cards">
+                <div class="summary-card balance-card">
+                    <p class="card-label">
+                        Total Balance
+                    </p>
+                    <h2>₹0</h2>
+                    <span class="card-change positive" id="balance-change">
+                        0% from last month
+                    </span>
+                </div>
+                <div class="summary-card income-card" >
+                    <p class="card-label">
+                        Total Income
+                    </p>
+                    <h2>₹0</h2>
+                    <span class="card-change positive" id="income-change" >
+                        0% from last month
+                    </span>
+                </div>
+                <div class="summary-card expense-card">
+                    <p class="card-label">
+                        Total Expenses
+                    </p>
+                    <h2>₹0</h2>
+                    <span class="card-change negative" id="expense-change">
+                        0% from last month
+                    </span>
+                </div>
+                <div class="summary-card savings-card ">
+                    <p class="card-label">
+                        Savings
+                    </p>
+                    <h2>₹0</h2>
+                    <span class="card-change positive" id="savings-rate">
+                        0% savings rate
+                    </span>
+                </div>
+            </section>
+
+            <section class="overview-section">
+                <div class="chart-card">
+                    <div class="section-header">
+                        <div>
+                            <h2>Spending Overview</h2>
+                            <p> My spending by Category</p>
+                        </div>
+                        <select id="chart-period">
+                            <option value="current">This Month</option>
+                            <option value="previous">Last Month</option>
+                            <option value="three-months">Last 3 Months</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="spendingChart"></canvas>
+                    </div>                
+                </div>
+
+                <div class="budget-card">
+                    <div class="section-header">
+                        <div>
+                            <h2>Budget Status</h2>
+                            <p>Monthly spending limits</p>
+                        </div>
+                          <button id="edit-budget-btn">Edit Budget</button>
+                    </div>
+                    <div class="budget-item" data-category="Food">
+                        <div class="budget-info">
+                            <div class="budget-category">
+                            <span class="budget-icon"><i class="fa-solid fa-burger"></i></span>
+                            <span class="budget-name">Food</span>
+                            </div>
+                            <span class="budget-amount">₹0 / ₹5,000</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress food-progress"></div>
+                        </div>
+                    </div>
+                    <div class="budget-item" data-category="Transport" >
+                        <div class="budget-info">
+                            <div class="budget-category">
+                                <span class="budget-icon"><i class="fa-solid fa-car"></i></span>
+                                <span class="budget-name">Transport</span>
+                            </div>
+                            <span class="budget-amount">₹0 / ₹3,000</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress transport-progress"></div>
+                        </div>
+                    </div>
+                    <div class="budget-item" data-category="Shopping">
+                        <div class="budget-info">
+                            <div class="budget-category">
+                                <span class="budget-icon"><i class="fa-solid fa-bag-shopping"></i></span>
+                                <span class="budget-name">Shopping</span>
+                            </div>
+                            <span class="budget-amount">₹0 / ₹5,000</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress shopping-progress"></div>
+                        </div>
+                    </div>
+                    <div class="budget-item" data-category="Entertainment">
+                    <div class="budget-info">
+                        <div class="budget-category">
+                            <span class="budget-icon">
+                                <i class="fa-solid fa-film"></i>
+                            </span>
+                            <span class="budget-name">Entertainment</span>
+                        </div>
+                        <span class="budget-amount">₹0 / ₹3,000</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress entertainment-progress"></div>
+                    </div>
+                </div>
+                <div class="budget-item" data-category="miscellaneous">
+                <div class="budget-info">
+                    <div class="budget-category">
+                        <span class="budget-icon">
+                            <i class="fa-solid fa-box"></i>
+                        </span>
+                        <span class="budget-name">Miscellaneous</span>
+                    </div>
+
+                    <span class="budget-amount">₹0 / ₹2,000</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress miscellaneous-progress"></div>
+                </div>
+            </div>
+
+
+            </div>
+            </section>
+
+            <section class="transactions-card">
+                <div class="section-header">
+                    <div>
+                        <h2>Recent Transactions</h2>
+                        <p>Your latest financial activity</p>
+                    </div>
+                    <select id="transaction-filter">
+                        <option value="all">All Transactions</option>
+                        <option value="Income">Income</option>
+                        <option value="Expense">Expense</option>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Salary">Salary</option>
+                        <option value="miscellaneous">Miscellaneous</option>
+                    </select>
+                </div>
+
+                <div class="transaction-list" id="transaction-list"></div>
+            </section>
+        </main>
+    </div>
+
+
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modal-title">Add Transactions</h2>
+                <button class="close-btn" id="close-modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <form class="transaction-form" id="transaction-form">
+                <div class="form-group">
+                    <label>Amount</label>
+                    <input type="number" id="amount"  placeholder="₹ 0.00">
+                </div>
+                <div class="form-group">
+                    <label>Type</label>
+                    <div class="type-options">
+                        <label >
+                            <input type="radio" id="expense" name="type" checked>
+                            Expense
+                        </label>
+                        <label>
+                            <input type="radio" id="income" name="type">
+                            Income
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                <label>Category</label>
+                <select id="category">
+                    <option>Food</option>
+                    <option>Transport</option>
+                    <option>Shopping</option>
+                    <option>Entertainment</option>
+                    <option>Salary</option>
+                    <option>miscellaneous</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Date</label>
+                <input type="date" id="date">
+            </div>
+            <div class="form-group">
+                <label>Notes</label>
+                <textarea id="notes" rows="3"
+                    placeholder="Reason..."></textarea>
+            </div>
+            <div class="form-buttons">
+                <button type="button" class="cancel-btn" id="cancel-modal">
+                    Cancel
+                </button>
+                <button type="submit" class="save-btn">
+                    Save Transaction
+                </button>
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-overlay" id="budget-modal-overlay">
+    <div class="modal">
+        <div class="modal-header">
+            <h2>Edit Budget</h2>
+            <button class="close-btn" id="close-budget-modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <form id="budget-form">
+            <div class="form-group">
+                <label>Food</label>
+                <input type="number" id="food-budget" placeholder="₹5000">
+            </div>
+
+            <div class="form-group">
+                <label>Transport</label>
+                <input type="number" id="transport-budget" placeholder="₹3000">
+            </div>
+
+            <div class="form-group">
+                <label>Shopping</label>
+                <input type="number" id="shopping-budget" placeholder="₹5000">
+            </div>
+
+            <div class="form-group">
+                <label>Entertainment</label>
+                <input type="number" id="entertainment-budget" placeholder="₹3000">
+            </div>
+
+            <div class="form-group">
+                <label>Miscellaneous</label>
+                <input type="number" id="miscellaneous-budget" placeholder="₹2000">
+            </div>
+
+            <div class="form-buttons">
+                <button type="button" class="cancel-btn" id="cancel-budget-modal">
+                    Cancel
+                </button>
+
+                <button type="submit" class="save-btn">
+                    Save Budget
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
